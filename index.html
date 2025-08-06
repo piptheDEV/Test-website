@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat App Test</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #fff; padding: 20px; }
+    #chat { height: 300px; overflow-y: scroll; border: 1px solid #444; padding: 10px; background: #222; margin-bottom: 10px; }
+    input, button { padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>💬 Chat App (Test)</h1>
+  <div id="chat"></div>
+  <input id="msgInput" placeholder="Type a message..." />
+  <button onclick="send()">Send</button>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("msgInput");
+
+    function send() {
+      const msg = input.value.trim();
+      if (msg) {
+        const line = document.createElement("div");
+        line.textContent = "You: " + msg;
+        chat.appendChild(line);
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }
+
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") send();
+    });
+  </script>
+</body>
+    </html>
